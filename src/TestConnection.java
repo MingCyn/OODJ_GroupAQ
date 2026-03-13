@@ -4,5 +4,6 @@ public class TestConnection {
 		// TODO Auto-generated method stub
 		System.out.println("Git is linked!");
 		System.out.println("GIt is Linked test Sinyi");
+		System.out.println("test for Sinyi");
 	}
 }

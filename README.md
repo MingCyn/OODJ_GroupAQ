@@ -1,71 +1,184 @@
-# OODJ_Assignment_GroupAQ
-Team Setup & Git Workflow Guide
-To keep our code organized and prevent us from overwriting each other's work, please follow this guide to set up your Eclipse environment.
+# 🚀 OODJ Assignment – Group AQ
 
-1. Initial Setup: Connecting Eclipse to GitHub
-Do not create a new repository. You will "Clone" the existing one I created.
+## Team Developer Setup & Git Workflow Guide
 
-Copy the Repo URL: https://github.com/MingCyn/OODJ_GroupAQ.git
+To keep our code organized and prevent overwriting each other's work, please follow this guide to set up your Eclipse environment.
 
-Import to Eclipse:
+---
 
-Go to File > Import -> Git > Projects from Git (with smart import).
+# 🔑 1. Initial Setup: Connecting Eclipse to GitHub
 
-Select Clone URI and paste the URL.
+⚠️ **Do NOT create a new repository. You must clone the existing one.**
 
-Authentication:
+**Repository URL**
 
-Username: Your GitHub username.
+```
+https://github.com/MingCyn/OODJ_GroupAQ.git
+```
 
-Password: Your Personal Access Token (PAT). (Standard passwords do not work for Eclipse).
+### Steps in Eclipse
 
-Finish: Follow the prompts. Eclipse will download the project to your local computer.
+1. Go to **File → Import**
+2. Select **Git → Projects from Git (with smart import)**
+3. Select **Clone URI**
+4. Paste the repository URL
 
-2. Understanding Perspectives (The "Where am I?" fix)
-Eclipse has two "modes" we use for this project. Look at the top right corner to switch:
+### Authentication
 
-Java Perspective (Icon: J): Use this 90% of the time. This is where you write code, create classes, and run the program.
+* **Username:** Your GitHub username
+* **Password:** Your **Personal Access Token (PAT)**
 
-Git Perspective (Icon: Orange Diamond): Use this only if you need to fix "Remotes" or see the history of branches.
+⚠️ Normal GitHub passwords **will NOT work in Eclipse**
 
-If your "New Class" button disappears, you are probably in the wrong perspective!
+🔒 **Important:** Save your PAT somewhere safe as a backup.
 
-3. The Golden Rule: Use Branches
-Never push directly to the main branch. If you do, it might cause conflicts for everyone else.
+After finishing the setup, Eclipse will download the project to your computer.
 
-How to create a new branch:
+---
 
-Right-click the project -> Team > Switch To > New Branch...
+# 🖥️ 2. Understanding Perspectives (The "Where am I?" Fix)
 
-Name it after your task (e.g., login-page or inventory-fix).
+Eclipse has two main perspectives:
 
-Look at the project name in your sidebar; it should now show [your-branch-name] instead of [main].
+### Java Perspective (Icon: J)
 
-4. How to Save and Push Your Work
-When you finish a task, follow these steps to send it to GitHub:
+Use this **90% of the time** for:
 
-Open Git Staging: Go to Window > Show View > Other > Git Staging.
+* Writing code
+* Creating classes
+* Running programs
 
-Stage Changes: Drag your new .java files from "Unstaged" to "Staged Changes".
+### Git Perspective (Orange Diamond)
 
-Commit: Write a short message (e.g., "Added login validation").
+Use this **only when needed** for:
 
-Push: Click Commit and Push. This sends your code to your branch on GitHub, not the main one.
+* Fixing remotes
+* Checking branch history
 
-5. Making a "Pull Request" (Merging to Main)
-Once your code is working perfectly and you want to add it to the final project:
+👉 If the **New Class button disappears**, you're probably in the wrong perspective.
 
-Go to our GitHub Website.
+---
 
-You will see a yellow bar saying "Your branch had recent pushes." Click Compare & Pull Request.
+# 🌿 3. The Golden Rule: Use Branches
 
-Add a description of what you did and click Create Pull Request.
+⚠️ **Never push directly to the `main` branch.**
 
-The rest of the team can then review it before it officially joins the main code.
+This prevents merge conflicts.
 
-⚠️ Important: Handling .txt files
-Our project is set to ignore .txt files in Git.
+### Create a new branch
 
-Why? So we don't accidentally overwrite each other's test data (like usernames).
+1. Right-click the project
+2. Select **Team → Switch To → New Branch**
+3. Name the branch based on your task
 
-Your Job: You must manually create a users.txt file in your project folder once you've cloned it. The system will read it locally, but GitHub will never see it.
+Example branch names:
+
+```
+login-page
+inventory-fix
+user-authentication
+```
+
+The sidebar will show:
+
+```
+[your-branch-name]
+```
+
+instead of
+
+```
+[main]
+```
+
+---
+
+# 💾 4. How to Save and Push Your Work
+
+When you finish a task:
+
+### 1️⃣ Open Git Staging
+
+```
+Window → Show View → Other → Git Staging
+```
+
+### 2️⃣ Stage Changes
+
+Drag `.java` files from:
+
+```
+Unstaged Changes → Staged Changes
+```
+
+### 3️⃣ Commit
+
+Write a short commit message.
+
+Example:
+
+```
+Added login validation
+```
+
+### 4️⃣ Push
+
+Click **Commit and Push**
+
+Your code will be pushed to **your branch (not main)**.
+
+---
+
+# 🔄 5. Making a Pull Request (Merging to Main)
+
+After testing your code:
+
+1. Go to the **GitHub repository website**
+2. A yellow bar will appear:
+
+```
+"Your branch had recent pushes"
+```
+
+3. Click **Compare & Pull Request**
+4. Add a description
+5. Click **Create Pull Request**
+
+The team will review before merging into `main`.
+
+---
+
+# 📂 Important: Handling `.txt` Files
+
+Our project **ignores `.txt` files in Git**.
+
+### Reason
+
+To prevent developers from overwriting each other's test data.
+
+
+### What You Need to Do
+
+After cloning the project:
+
+1. Manually create a file named:
+
+```
+users.txt
+```
+
+2. Place it in the **project folder**
+
+The program will read it locally, but **GitHub will NOT track it**.
+
+---
+
+# ✅ Final Reminder
+
+Following this workflow keeps our project:
+
+* Clean
+* Organized
+* Conflict-free
+
+🔒 **Always back up your Personal Access Token (PAT)** – it is your key to GitHub access.
