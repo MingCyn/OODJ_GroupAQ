@@ -31,3 +31,5 @@ pom.xml
 bin
 .settings
 target
+
+*.txt
