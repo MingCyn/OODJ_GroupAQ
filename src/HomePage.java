@@ -104,7 +104,12 @@ public class HomePage extends JFrame {
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         btn.addActionListener(e -> {
-            System.out.println("Navigating to: " + text);
+            if (text.equals("Logout")) {
+                new LoginPage().setVisible(true);
+                dispose();
+            } else {
+                System.out.println("Navigating to: " + text);
+            }
         });
 
         sidebar.add(btn);
