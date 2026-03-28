@@ -31,5 +31,5 @@ pom.xml
 bin
 .settings
 target
-
+.metadata
 *.txt

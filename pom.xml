@@ -3,4 +3,13 @@
   <groupId>OODJ_GroupAQ</groupId>
   <artifactId>OODJ_GroupAQ</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>src/images</directory>
+        <targetPath>images</targetPath>
+      </resource>
+    </resources>
+  </build>
 </project>
