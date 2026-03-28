@@ -17,7 +17,7 @@ public class SignupPage extends JFrame {
         JLabel lblNewLabel = new JLabel(""); 
         lblNewLabel.setBounds(25, 10, 108, 87);
         signupPanel.add(lblNewLabel);
-        ImageIcon icon = new ImageIcon(LoginPage.class.getResource("/APU-logo.png"));
+        ImageIcon icon = new ImageIcon(LoginPage.class.getResource("/images/APU-logo.png"));
 
         // 2. Scale it to match your label size (108x108)
         Image img = icon.getImage();
