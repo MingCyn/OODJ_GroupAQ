@@ -33,3 +33,7 @@ bin
 target
 .metadata
 *.txt
+
+.settings/
+.project
+pom.xml
