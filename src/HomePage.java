@@ -1,0 +1,96 @@
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+
+public class HomePage extends JFrame {
+    private JPanel sidebar, contentPanel;
+    private JLabel lblUserName;
+
+    // Added 'role' to the constructor so it can be used for the Admin check
+    public HomePage(String role, String userName) {
+        setTitle("APU Automotive Service Centre");
+
+        ImageIcon logo = new ImageIcon(getClass().getResource("/logo.png"));
+
+
+     this.setIconImage(logo.getImage());
+        setSize(1800, 1000);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+
+        // 1. Sidebar Setup
+        sidebar = new JPanel();
+        sidebar.setLayout(new BoxLayout(sidebar, BoxLayout.Y_AXIS));
+        sidebar.setBackground(new Color(211, 238, 252)); 
+        sidebar.setPreferredSize(new Dimension(350, 1000));
+        sidebar.setBorder(new EmptyBorder(20, 10, 20, 10));
+
+        // User Profile Section
+        lblUserName = new JLabel(userName);
+        lblUserName.setFont(new Font("Arial", Font.BOLD, 22));
+        lblUserName.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        sidebar.add(Box.createRigidArea(new Dimension(0,40)));
+        sidebar.add(lblUserName);
+        sidebar.add(Box.createRigidArea(new Dimension(0, 30)));
+
+        // Navigation Buttons 
+        addNavButton("Manage Account", new Color(255, 249, 230));
+        addNavButton("Appointments", new Color(168, 208, 239));
+        addNavButton("Services & Pricing", new Color(168, 208, 239));
+        addNavButton("Payments", new Color(168, 208, 239));
+        
+        if (role.equalsIgnoreCase("Admin")) {
+            addNavButton("Reports & Analytics", new Color(168,208,239));
+        }
+        
+        addNavButton("Feedback", new Color(168,208,239));
+        
+        sidebar.add(Box.createVerticalGlue());
+
+        addNavButton("Logout", new Color(255, 204, 204)); 
+
+        // 2. Main Content Area
+        contentPanel = new JPanel();
+        contentPanel.setLayout(new BorderLayout());
+        contentPanel.setBackground(Color.WHITE);
+        
+        JLabel welcomeMsg = new JLabel("Welcome to APU Automotive Service Centre", SwingConstants.LEFT);
+        welcomeMsg.setFont(new Font("Arial", Font.BOLD, 36)); 
+        
+        welcomeMsg.setBorder(new EmptyBorder(30,50,0,20));
+        contentPanel.add(welcomeMsg, BorderLayout.NORTH);
+
+        add(sidebar, BorderLayout.WEST);
+        add(contentPanel, BorderLayout.CENTER);
+    }
+    
+    private void addNavButton(String text, Color bgColor) {
+        JButton btn = new JButton(text);
+        
+        // Fixed: Added missing closing parenthesis
+        btn.setFont(new Font("Arial", Font.PLAIN, 20));
+        
+        btn.setBackground(bgColor);
+        btn.setForeground(Color.BLACK); 
+        btn.setFocusPainted(false);
+        
+        Dimension btnSize = new Dimension(300, 60);
+        btn.setPreferredSize(btnSize);
+        btn.setMaximumSize(btnSize);
+        btn.setMinimumSize(btnSize);
+        btn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        btn.addActionListener(e -> {
+            System.out.println("Navigating to: " + text);
+        });
+
+        sidebar.add(btn);
+        sidebar.add(Box.createRigidArea(new Dimension(0, 15)));
+    }
+    
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new HomePage("Admin", "JOHN DOE").setVisible(true));
+    }
+}

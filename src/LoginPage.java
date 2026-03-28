@@ -9,10 +9,21 @@ public class LoginPage extends JFrame {
         setSize(600, 400);
         setLocationRelativeTo(null);
         setResizable(false);
-        setLayout(new BorderLayout());
+        getContentPane().setLayout(new BorderLayout());
 
         LoginPanel loginPanel = new LoginPanel();
-        add(loginPanel, BorderLayout.CENTER);
+        getContentPane().add(loginPanel, BorderLayout.CENTER);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setBounds(25, 10, 108, 87);
+        loginPanel.add(lblNewLabel);
+        
+        ImageIcon icon = new ImageIcon(LoginPage.class.getResource("/APU-logo.png"));
+
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
+
+        lblNewLabel.setIcon(new ImageIcon(scaledImg));
 
         setVisible(true);
     }
@@ -40,7 +51,7 @@ class LoginPanel extends JPanel {
         add(titleLabel);
 
         JLabel usernameLabel = new JLabel("USERNAME:");
-        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 22));
+        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         usernameLabel.setBounds(40, 100, 150, 40);
         add(usernameLabel);
         usernameField = new JTextField();
@@ -53,7 +64,7 @@ class LoginPanel extends JPanel {
         add(usernameField);
 
         JLabel passwordLabel = new JLabel("PASSWORD:");
-        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 22));
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         passwordLabel.setBounds(40, 160, 150, 40);
         add(passwordLabel);
         passwordField = new JPasswordField();
