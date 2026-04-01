@@ -141,8 +141,10 @@ class LoginPanel extends JPanel {
             String inputUser = usernameField.getText();
             String inputPass = new String(passwordField.getPassword());
             boolean success = false;
+            
             String userRole = "";
             String userName = "";
+            
             try {
                 java.io.File file = new java.io.File("data/account.txt");
                 if (file.exists()) {

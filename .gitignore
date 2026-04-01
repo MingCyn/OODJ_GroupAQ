@@ -40,12 +40,4 @@ target
 .metadata
 *.txt
 
-.settings/
-.project
-pom.xml
-
-# Maven
-*.iml
-
-# IDE temporary files
-*.log
+.metadata

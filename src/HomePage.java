@@ -111,7 +111,7 @@ public class HomePage extends JFrame {
                 System.out.println("Navigating to: " + text);
             }
         });
-
+        
         sidebar.add(btn);
         sidebar.add(Box.createRigidArea(new Dimension(0, 15)));
     }
