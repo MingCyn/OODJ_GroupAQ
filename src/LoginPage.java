@@ -9,10 +9,21 @@ public class LoginPage extends JFrame {
         setSize(600, 400);
         setLocationRelativeTo(null);
         setResizable(false);
-        setLayout(new BorderLayout());
+        getContentPane().setLayout(new BorderLayout());
 
         LoginPanel loginPanel = new LoginPanel();
-        add(loginPanel, BorderLayout.CENTER);
+        getContentPane().add(loginPanel, BorderLayout.CENTER);
+        
+        JLabel lblNewLabel = new JLabel("New label");
+        lblNewLabel.setBounds(25, 10, 108, 87);
+        loginPanel.add(lblNewLabel);
+        
+        ImageIcon icon = new ImageIcon(LoginPage.class.getResource("/images/APU-logo.png"));
+
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
+
+        lblNewLabel.setIcon(new ImageIcon(scaledImg));
 
         setVisible(true);
     }
@@ -40,7 +51,7 @@ class LoginPanel extends JPanel {
         add(titleLabel);
 
         JLabel usernameLabel = new JLabel("USERNAME:");
-        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 22));
+        usernameLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         usernameLabel.setBounds(40, 100, 150, 40);
         add(usernameLabel);
         usernameField = new JTextField();
@@ -53,7 +64,7 @@ class LoginPanel extends JPanel {
         add(usernameField);
 
         JLabel passwordLabel = new JLabel("PASSWORD:");
-        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 22));
+        passwordLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         passwordLabel.setBounds(40, 160, 150, 40);
         add(passwordLabel);
         passwordField = new JPasswordField();
@@ -130,6 +141,8 @@ class LoginPanel extends JPanel {
             String inputUser = usernameField.getText();
             String inputPass = new String(passwordField.getPassword());
             boolean success = false;
+            String userRole = "";
+            String userName = "";
             try {
                 java.io.File file = new java.io.File("data/account.txt");
                 if (file.exists()) {
@@ -137,11 +150,13 @@ class LoginPanel extends JPanel {
                     while (scanner.hasNextLine()) {
                         String line = scanner.nextLine();
                         String[] parts = line.split(",");
-                        if (parts.length >= 3) {
+                        if (parts.length >= 4) {
                             String fileUser = parts[1].trim();
                             String filePass = parts[2].trim();
                             if (fileUser.equals(inputUser) && filePass.equals(inputPass)) {
                                 success = true;
+                                userRole = parts[3].trim();
+                                userName = fileUser;
                                 break;
                             }
                         }
@@ -154,6 +169,8 @@ class LoginPanel extends JPanel {
 
             if (success) {
                 JOptionPane.showMessageDialog(this, "Login Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                SwingUtilities.getWindowAncestor(this).dispose();
+                new HomePage(userRole, userName).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect Input Data", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }

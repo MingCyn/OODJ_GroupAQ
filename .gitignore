@@ -33,6 +33,16 @@ bin/
 .settings/
 .classpath
 .project
+pom.xml
+bin
+.settings
+target
+.metadata
+*.txt
+
+.settings/
+.project
+pom.xml
 
 # Maven
 *.iml
