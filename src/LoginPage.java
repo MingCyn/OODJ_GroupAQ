@@ -141,6 +141,10 @@ class LoginPanel extends JPanel {
             String inputUser = usernameField.getText();
             String inputPass = new String(passwordField.getPassword());
             boolean success = false;
+            
+            String userRole = "";
+            String userName = "";
+            
             try {
                 java.io.File file = new java.io.File("data/account.txt");
                 if (file.exists()) {
@@ -148,11 +152,13 @@ class LoginPanel extends JPanel {
                     while (scanner.hasNextLine()) {
                         String line = scanner.nextLine();
                         String[] parts = line.split(",");
-                        if (parts.length >= 3) {
+                        if (parts.length >= 4) {
                             String fileUser = parts[1].trim();
                             String filePass = parts[2].trim();
                             if (fileUser.equals(inputUser) && filePass.equals(inputPass)) {
                                 success = true;
+                                userRole = parts[3].trim();
+                                userName = fileUser;
                                 break;
                             }
                         }
@@ -165,6 +171,8 @@ class LoginPanel extends JPanel {
 
             if (success) {
                 JOptionPane.showMessageDialog(this, "Login Successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+                SwingUtilities.getWindowAncestor(this).dispose();
+                new HomePage(userRole, userName).setVisible(true);
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect Input Data", "Login Failed", JOptionPane.ERROR_MESSAGE);
             }

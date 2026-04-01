@@ -5,6 +5,7 @@ import java.awt.*;
 public class HomePage extends JFrame {
     private JPanel sidebar, contentPanel;
     private JLabel lblUserName;
+    private JLabel lblUserId;
 
     // Added 'role' to the constructor so it can be used for the Admin check
     public HomePage(String role, String userName) {
@@ -31,8 +32,30 @@ public class HomePage extends JFrame {
         lblUserName.setFont(new Font("Arial", Font.BOLD, 22));
         lblUserName.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+
+        String userId = "";
+        try {
+            java.util.List<String> lines = java.nio.file.Files.readAllLines(java.nio.file.Paths.get("data", "account.txt"));
+            for (String line : lines) {
+                String[] parts = line.split(",");
+                if (parts.length > 1 && parts[1].trim().equals(userName)) {
+                    userId = parts[0].trim();
+                    break;
+                }
+            }
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        }
+        
+        lblUserId = new JLabel(userId);
+        lblUserId.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblUserId.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         sidebar.add(Box.createRigidArea(new Dimension(0,40)));
         sidebar.add(lblUserName);
+        sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
+        sidebar.add(lblUserId);
+        
         sidebar.add(Box.createRigidArea(new Dimension(0, 30)));
 
         // Navigation Buttons 
@@ -83,9 +106,14 @@ public class HomePage extends JFrame {
         btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         
         btn.addActionListener(e -> {
-            System.out.println("Navigating to: " + text);
+            if (text.equals("Logout")) {
+                new LoginPage().setVisible(true);
+                dispose();
+            } else {
+                System.out.println("Navigating to: " + text);
+            }
         });
-
+        
         sidebar.add(btn);
         sidebar.add(Box.createRigidArea(new Dimension(0, 15)));
     }
