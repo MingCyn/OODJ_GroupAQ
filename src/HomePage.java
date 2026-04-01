@@ -11,7 +11,7 @@ public class HomePage extends JFrame {
     public HomePage(String role, String userName) {
         setTitle("APU Automotive Service Centre");
 
-        ImageIcon logo = new ImageIcon(getClass().getResource("/logo.png"));
+        ImageIcon logo = new ImageIcon(getClass().getResource("/images/logo.png"));
 
 
      this.setIconImage(logo.getImage());
@@ -32,7 +32,6 @@ public class HomePage extends JFrame {
         lblUserName.setFont(new Font("Arial", Font.BOLD, 22));
         lblUserName.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-
         String userId = "";
         try {
             java.util.List<String> lines = java.nio.file.Files.readAllLines(java.nio.file.Paths.get("data", "account.txt"));
@@ -55,7 +54,6 @@ public class HomePage extends JFrame {
         sidebar.add(lblUserName);
         sidebar.add(Box.createRigidArea(new Dimension(0, 10)));
         sidebar.add(lblUserId);
-        
         sidebar.add(Box.createRigidArea(new Dimension(0, 30)));
 
         // Navigation Buttons 

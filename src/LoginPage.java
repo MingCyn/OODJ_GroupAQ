@@ -18,7 +18,7 @@ public class LoginPage extends JFrame {
         lblNewLabel.setBounds(25, 10, 108, 87);
         loginPanel.add(lblNewLabel);
         
-        ImageIcon icon = new ImageIcon(LoginPage.class.getResource("/APU-logo.png"));
+        ImageIcon icon = new ImageIcon(LoginPage.class.getResource("/images/APU-logo.png"));
 
         Image img = icon.getImage();
         Image scaledImg = img.getScaledInstance(108, 108, Image.SCALE_SMOOTH);
